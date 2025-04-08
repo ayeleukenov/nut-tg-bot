@@ -9,7 +9,14 @@ load_dotenv()
 BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.getenv("SECRET_KEY")
 DEBUG = True
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'localhost',
+    '127.0.0.1',
+    'stunning-mackerel-creative.ngrok-free.app',
+    ]
+CSRF_TRUSTED_ORIGINS = [
+    'https://stunning-mackerel-creative.ngrok-free.app'
+]
 INSTALLED_APPS = [
     "django.contrib.admin",
     "django.contrib.auth",
@@ -77,3 +84,4 @@ STATIC_URL = "static/"
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 AUTH_USER_MODEL = 'accounts_app.UserProfileModel'
+TELEGRAM_TOKEN = os.getenv('TELEGRAM_TOKEN')
