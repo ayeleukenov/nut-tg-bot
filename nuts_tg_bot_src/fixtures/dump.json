@@ -1,0 +1,71 @@
+[
+{
+    "model": "nuts_tg_app.category",
+    "pk": 1,
+    "fields": {
+        "name": "fruits"
+    }
+},
+{
+    "model": "nuts_tg_app.category",
+    "pk": 2,
+    "fields": {
+        "name": "vegetables"
+    }
+},
+{
+    "model": "nuts_tg_app.category",
+    "pk": 3,
+    "fields": {
+        "name": "nuts"
+    }
+},
+{
+    "model": "nuts_tg_app.categoryitem",
+    "pk": 1,
+    "fields": {
+        "name": "Яблоко",
+        "category": 1
+    }
+},
+{
+    "model": "nuts_tg_app.categoryitem",
+    "pk": 2,
+    "fields": {
+        "name": "Груша",
+        "category": 1
+    }
+},
+{
+    "model": "nuts_tg_app.categoryitem",
+    "pk": 3,
+    "fields": {
+        "name": "Помидор",
+        "category": 2
+    }
+},
+{
+    "model": "nuts_tg_app.categoryitem",
+    "pk": 4,
+    "fields": {
+        "name": "Огурец",
+        "category": 2
+    }
+},
+{
+    "model": "nuts_tg_app.categoryitem",
+    "pk": 5,
+    "fields": {
+        "name": "Грецкий орех",
+        "category": 3
+    }
+},
+{
+    "model": "nuts_tg_app.categoryitem",
+    "pk": 6,
+    "fields": {
+        "name": "Миндаль",
+        "category": 3
+    }
+}
+]
