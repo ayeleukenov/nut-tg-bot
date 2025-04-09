@@ -68,7 +68,13 @@ python manage.py loaddata fixtures/auth.json fixtures/dump.json
 python manage.py runbot
 ```
 
-8. запустить сервер
+8а. запустить ngrok
+
+```
+ngrok http --domain=stunning-mackerel-creative.ngrok-free.app 8080
+```
+
+8б. запустить сервер
 
 ```
 python manage.py runserver 0:8080
