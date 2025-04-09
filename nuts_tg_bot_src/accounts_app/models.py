@@ -22,6 +22,13 @@ class UserProfileModel(AbstractUser):
         verbose_name='Lang Code',
     )
     
+    selected_items = models.ManyToManyField(
+        'nuts_tg_app.CategoryItem',
+        blank=True,
+        related_name='users',
+        verbose_name='Selected Items',
+    )
+    
     def __str__(self):
         return self.username
     

@@ -27,7 +27,6 @@ async def start(update, context):
     ]
     reply_markup = InlineKeyboardMarkup(keyboard)
     
-    print('this ran when?')
     await update.message.reply_text("Привет Мир", reply_markup=reply_markup)
 
 
@@ -54,7 +53,6 @@ asyncio.run(initialize_application())
 def webhook_view(request):
     if request.method == 'POST':
         update_json = json.loads(request.body.decode('utf-8'))
-        print('update_json is', update_json)
         update = Update.de_json(update_json, application.bot)
         first_name = last_name = username = ''
         if update.effective_user.first_name:
@@ -74,7 +72,6 @@ def webhook_view(request):
         )
         asyncio.run(application.process_update(update))
 
-        print('command finished')
         return HttpResponse('OK')
     return HttpResponse('Accessed webhook with GET')
 
