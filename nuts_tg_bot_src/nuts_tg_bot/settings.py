@@ -9,13 +9,14 @@ load_dotenv()
 BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.getenv("SECRET_KEY")
 DEBUG = True
+NGROK_DOMAIN = 'stunning-mackerel-creative.ngrok-free.app'
 ALLOWED_HOSTS = [
     'localhost',
     '127.0.0.1',
-    'stunning-mackerel-creative.ngrok-free.app',
+    NGROK_DOMAIN,
     ]
 CSRF_TRUSTED_ORIGINS = [
-    'https://stunning-mackerel-creative.ngrok-free.app'
+    f'https://{NGROK_DOMAIN}'
 ]
 INSTALLED_APPS = [
     "django.contrib.admin",
