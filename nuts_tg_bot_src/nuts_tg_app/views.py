@@ -4,10 +4,13 @@ import asyncio
 from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.conf import settings
+from django.views.generic import DetailView
+from django.contrib.auth import get_user_model
 from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import Application, CommandHandler, CallbackQueryHandler
 
 from accounts_app.models import UserProfileModel 
+from nuts_tg_app.models import Category, CategoryItem
 
 
 application = Application.builder().token(settings.TELEGRAM_TOKEN).build()
@@ -16,7 +19,10 @@ application = Application.builder().token(settings.TELEGRAM_TOKEN).build()
 async def start(update, context):
     keyboard = [
         [InlineKeyboardButton(
-            "Открыть веб-апп", url=f"https://{settings.NGROK_DOMAIN}/chat_id/{update.effective_chat.id}"
+            "Открыть веб-апп", 
+            url=f"https://{settings.NGROK_DOMAIN}/chat_id/{
+                update.effective_chat.id
+                }"
             )]
     ]
     reply_markup = InlineKeyboardMarkup(keyboard)
@@ -73,5 +79,21 @@ def webhook_view(request):
     return HttpResponse('Accessed webhook with GET')
 
 
-def webapp_view(request):
-    return HttpResponse('webapp OK')
+class UserProfileView(DetailView):
+    template_name = 'user_profile_view.html'
+    model = get_user_model()
+    context_object_name = 'user_obj'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['category_items'] = CategoryItem.objects.all()
+        context['categories'] = Category.objects.all()
+        return context
+
+    def get_object(self, queryset=None):
+        if queryset is None:
+            queryset = self.get_queryset()
+        
+        chat_id = self.kwargs.get('pk')
+        return queryset.get(chat_id=chat_id)
+    

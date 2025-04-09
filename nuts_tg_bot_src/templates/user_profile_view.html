@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Task Details{% endblock %}
+{% block content %}
+<div class="user-block">
+    <p class="style-custom">chat id: {{ user_obj.chat_id }}</p>
+</div>
+<div class="produces-block">
+    {% for category in categories %}
+        <div class="segment-block pt-10">
+            <h3 class="style-custom">{{ category }}</h3>
+            <ul class="style-custom">
+                {% for item in category.categoryitem_set.all %}
+                    <li class="style-custom">{{ item.name }}</li>
+                {% endfor %}
+            </ul> 
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}

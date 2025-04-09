@@ -1,8 +1,8 @@
 from django.urls import path
-from .views import webhook_view, webapp_view
+from .views import webhook_view, UserProfileView
 
 
 urlpatterns = [
     path('webhook/', webhook_view, name='tg_webhook'),
-    path('chat_id/<int:pk>/', webapp_view, name='webapp_view'),
+    path('chat_id/<int:pk>/', UserProfileView.as_view(), name='webapp_view'),
 ]
