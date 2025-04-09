@@ -43,11 +43,11 @@ https://github.com/ayeleukenov/nut-tg-bot
 ```
 source venv/bin/activate
 ```
-4. установить зависимости 
+3. установить зависимости 
 ```
 pip install -r requirements.txt
 ```
-3. получить файл .env и поместить внутрь nuts_tg_bot_src
+4. получить файл .env и поместить внутрь nuts_tg_bot_src
 5. применить миграции
 
 ```
